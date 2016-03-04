@@ -54,4 +54,13 @@ public class AppTest extends FluentTest {
     goTo("http://localhost:4567/venues");
     assertThat(pageSource()).contains("Epicodus");
   }
+
+  @Test
+  public void addVenue() {
+      goTo("http://localhost:4567/");
+      fill("#venueName").with("Epicodus");
+      fill("#venueLocation").with("Portland");
+      submit("#addVenue");
+      assertThat(pageSource()).contains("Epicodus");
+  }
 }

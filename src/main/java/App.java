@@ -43,5 +43,18 @@ public class App {
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
 
+    post("/addVenue", (request, response) -> {
+      String venueName = request.queryParams("venueName");
+      String venueLocation = request.queryParams("venueLocation");
+      if(venueName.trim().length() > 0 && venueLocation.trim().length() > 0) {
+        Venue newVenue = new Venue(venueName, venueLocation);
+        newVenue.save();
+        response.redirect("/venues");
+        return null;
+      }
+      response.redirect("/");
+      return null;
+    });
+
   }
 }
