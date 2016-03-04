@@ -59,4 +59,14 @@ public class VenueTest {
   //   newVenue.delete();
   //   assertEquals(Venue.all().size(), 0);
   // }
+
+  @Test
+  public void addBand_addsBandToListOfBandsWhoHavePlayedThisVenue() {
+    Venue newVenue = new Venue("Epicodus", "Portland");
+    newVenue.save();
+    Band newBand = new Band("Radiohead", "Awesome Music");
+    newBand.save();
+    newVenue.addBand(newBand);
+    assertTrue(newVenue.getBands().contains(newBand));
+  }
 }
