@@ -26,4 +26,11 @@ public class BandTest {
     newBand.save();
     assertTrue(Band.all().get(0).equals(newBand));
   }
+
+  @Test
+  public void save_savesBandIdToDatabase() {
+    Band newBand = new Band("Matt and the Matties", "Electro Fusion Funk Powersoul");
+    newBand.save();
+    assertEquals(Band.all().get(0).getId(),newBand.getId());
+  }
 }

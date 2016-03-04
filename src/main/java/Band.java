@@ -43,7 +43,9 @@ public class Band {
   public void save() {
     try(Connection con = DB.sql2o.open()) {
       String sql = "INSERT INTO bands (name, music) VALUES (:name, :music)";
-      con.createQuery(sql).addParameter("name", name).addParameter("music", music).executeUpdate();
+      this.id = (int) con.createQuery(sql, true).addParameter("name", name).addParameter("music", music).executeUpdate().getKey();
     }
   }
+
+
 }
