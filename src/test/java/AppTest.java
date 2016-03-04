@@ -92,4 +92,26 @@ public class AppTest extends FluentTest {
     assertThat(pageSource()).contains("Rosanio");
     assertThat(pageSource()).contains("Indie");
   }
+
+  @Test
+  public void deleteBand() {
+    Band newBand = new Band("Matt and the Matties", "Electro Fusion Funk Powersoul");
+    newBand.save();
+    goTo("http://localhost:4567/bands/" + newBand.getId());
+    submit("#delete");
+    assertThat(pageSource()).contains("Matt and the Matties has been deleted");
+  }
+
+  // @Test
+  // public void updateVenue() {
+  //   Venue newVenue = new Venue("Epicodus", "Portland");
+  //   newVenue.save();
+  //   goTo("http://localhost:4567/venues/" + newVenue.getId());
+  //   fill("#newName").with("Madison Cube Garden");
+  //   submit("#updateName");
+  //   fill("#newLocation").with("New York City");
+  //   submit("#updateLocation");
+  //   assertThat(pageSource()).contains("Madison Cube Garden");
+  //   assertThat(pageSource()).contains("New York City");
+  // }
 }

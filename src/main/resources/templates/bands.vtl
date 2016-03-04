@@ -1,5 +1,9 @@
 <h1>All Bands</h1>
 
+#if($deletedBand)
+  <p>$deletedBand.getName() has been deleted</p>
+#end
+
 <dl>
 #foreach($band in $bands)
 <dt><a href="/bands/$band.getId()">$band.getName()</a></dt>

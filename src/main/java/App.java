@@ -98,5 +98,15 @@ public class App {
       return null;
     });
 
+    post("/bands/:id/delete", (request, response) -> {
+      HashMap<String, Object> model = new HashMap<String, Object>();
+      Band deletedBand = Band.find(Integer.parseInt(request.params(":id")));
+      deletedBand.delete();
+      model.put("bands", Band.all());
+      model.put("deletedBand", deletedBand);
+      model.put("template", "templates/bands.vtl");
+      return new ModelAndView(model, layout);
+    }, new VelocityTemplateEngine());
+
   }
 }
