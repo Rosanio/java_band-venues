@@ -1,6 +1,6 @@
 <h1>$band.getName()</h1>
 
-<h3>A(n) $band.getMusic() band</h3>
+<h2>A(n) $band.getMusic() band</h2>
 
 <div class="row">
   <div class="col-md-6">
@@ -24,11 +24,12 @@
     </form>
   </div>
 </div>
+<br></br>
 <form action="/bands/$band.getId()/delete" method="post">
   <button type="submit" class="btn btn-danger" id="delete">Delete this band</button>
 </form>
 
-
+#if($band.getVenues().size() > 0)
 <h3>Venues played at:</h3>
 <dl>
 #foreach($venue in $venues)
@@ -36,3 +37,7 @@
   <dd>Location: $venue.getLocation()</dd>
 #end
 </dl>
+#end
+
+<br></br>
+<a href="/bands">View all Bands</a>
