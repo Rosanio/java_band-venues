@@ -29,4 +29,13 @@ public class AppTest extends FluentTest {
       goTo("http://localhost:4567/");
       assertThat(pageSource()).contains("Favorite Bands");
   }
+
+  @Test
+  public void viewBands() {
+    Band newBand = new Band("Matt and the Matties", "Electro Fusion Funk Powersoul");
+    newBand.save();
+    goTo("http://localhost:4567/bands");
+    assertThat(pageSource()).contains("Matt and the Matties");
+
+  }
 }
