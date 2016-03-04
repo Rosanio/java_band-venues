@@ -39,4 +39,11 @@ public class Band {
       return newBand.getName().equals(name) && newBand.getMusic().equals(music);
     }
   }
+
+  public void save() {
+    try(Connection con = DB.sql2o.open()) {
+      String sql = "INSERT INTO bands (name, music) VALUES (:name, :music)";
+      con.createQuery(sql).addParameter("name", name).addParameter("music", music).executeUpdate();
+    }
+  }
 }
