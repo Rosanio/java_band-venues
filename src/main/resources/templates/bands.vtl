@@ -1,7 +1,8 @@
 <h1>All Bands</h1>
 
-<ul>
+<dl>
 #foreach($band in $bands)
-<li><h3><a href="/bands/$band.getId()">$band.getName()</a></h3></li>
+<dt><a href="/bands/$band.getId()">$band.getName()</a></dt>
+<dd>Plays $band.getMusic()</dd>
 #end
-</ul>
+</dl>
