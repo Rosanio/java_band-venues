@@ -33,4 +33,14 @@ public class BandTest {
     newBand.save();
     assertEquals(Band.all().get(0).getId(),newBand.getId());
   }
+
+  @Test
+  public void find_returnsBandBasedOnId() {
+    Band newBand = new Band("Matt and the Matties", "Electro Fusion Funk Powersoul");
+    newBand.save();
+    Band newBand2 = new Band("Rosanio", "Soft Fluffy Indie Music");
+    newBand2.save();
+    assertTrue(Band.find(newBand.getId()).equals(newBand));
+    assertTrue(Band.find(newBand2.getId()).equals(newBand2));
+  }
 }
