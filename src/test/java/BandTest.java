@@ -77,4 +77,15 @@ public class BandTest {
     newBand.addVenue(newVenue);
     assertTrue(newBand.getVenues().contains(newVenue));
   }
+
+  @Test
+  public void removeVenue_removesVenueFromListOfVenuesBandHasPlayedAt() {
+    Band newBand = new Band("Matt and the Matties", "Electro Fusion Funk Powersoul");
+    newBand.save();
+    Venue newVenue = new Venue("Epicodus", "Portland");
+    newVenue.save();
+    newBand.addVenue(newVenue);
+    newBand.removeVenue(newVenue);
+    assertEquals(0, newBand.getVenues().size());
+  }
 }

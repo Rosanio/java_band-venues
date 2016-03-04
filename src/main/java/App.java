@@ -113,8 +113,11 @@ public class App {
 
     post("/bands/:id/addVenue", (request, response) -> {
       Band band = Band.find(Integer.parseInt(request.params(":id")));
-      Venue venue = Venue.find(Integer.parseInt(request.queryParams("venueSelect")));
-      band.addVenue(venue);
+      String[] venueIds = request.queryParamsValues("venueSelect");
+      for(String id : venueIds) {
+        Venue venue = Venue.find(Integer.parseInt(id));
+        band.addVenue(venue);
+      }
       response.redirect("/bands/" + band.getId());
       return null;
     });
@@ -123,6 +126,22 @@ public class App {
       Band band = Band.find(Integer.parseInt(request.queryParams("bandSelect")));
       Venue venue = Venue.find(Integer.parseInt(request.params(":id")));
       venue.addBand(band);
+      response.redirect("/venues/" + venue.getId());
+      return null;
+    });
+
+    post("/bands/:id/:venueId/delete", (request, response) -> {
+      Band band = Band.find(Integer.parseInt(request.params(":id")));
+      Venue venue = Venue.find(Integer.parseInt(request.params(":venueId")));
+      band.removeVenue(venue);
+      response.redirect("/bands/" + band.getId());
+      return null;
+    });
+
+    post("/venues/:id/:bandId/delete", (request, response) -> {
+      Band band = Band.find(Integer.parseInt(request.params(":bandId")));
+      Venue venue = Venue.find(Integer.parseInt(request.params(":id")));
+      venue.removeBand(band);
       response.redirect("/venues/" + venue.getId());
       return null;
     });

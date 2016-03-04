@@ -27,14 +27,16 @@
 <br></br>
 <form action="/bands/$band.getId()/addVenue" method="post">
   <div class="form-group">
-    <label for="venueSelect">Pick a venue you've seen this band play at:</label>
-    <select class="form-control" name="venueSelect" id="venueSelect">
-      #foreach($venue in $allVenues)
-        #if(!$band.getVenues().contains($venue))
-          <option value="$venue.getId()">$venue.getName()</option>
-        #end
+    <label for="venueSelect">Select any venues you've seen this band play at:</label>
+    #foreach($venue in $allVenues)
+      #if(!$band.getVenues().contains($venue))
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" name="venueSelect" value="$venue.getId()" id="venue$venue.getId()">$venue.getName()
+          </label>
+        </div>
       #end
-    </select>
+    #end
   </div>
   <button type="submit" class="btn btn-primary" id="addVenue">Add Venue</button>
 </form>
@@ -49,6 +51,9 @@
 #foreach($venue in $venues)
   <dt>$venue.getName()</dt>
   <dd>Location: $venue.getLocation()</dd>
+  <form action="/bands/$band.getId()/$venue.getId()/delete" method="post">
+    <button type="submit" class="btn btn-default">Remove Venue</button>
+  </form>
 #end
 </dl>
 #end

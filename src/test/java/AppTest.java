@@ -109,7 +109,7 @@ public class AppTest extends FluentTest {
     Venue newVenue = new Venue("Epicodus", "Portland");
     newVenue.save();
     goTo("http://localhost:4567/bands/" + newBand.getId());
-    click("option", withText("Epicodus"));
+    click("#venue" + newVenue.getId());
     submit("#addVenue");
     assertThat(pageSource()).contains("Portland");
   }

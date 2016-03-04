@@ -89,4 +89,11 @@ public class Band {
       return con.createQuery(sql).addParameter("id", id).executeAndFetch(Venue.class);
     }
   }
+
+  public void removeVenue(Venue venue) {
+    try(Connection con = DB.sql2o.open()) {
+      String sql = "DELETE FROM bands_venues WHERE band_id = :band_id AND venue_id = :venue_id";
+      con.createQuery(sql).addParameter("band_id", id).addParameter("venue_id", venue.getId()).executeUpdate();
+    }
+  }
 }

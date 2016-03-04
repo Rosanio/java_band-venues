@@ -23,6 +23,9 @@
 #foreach($band in $venue.getBands())
   <dt>$band.getName()</dt>
   <dd>Plays $band.getMusic()</dd>
+  <form action="/venues/$venue.getId()/$band.getId()/delete" method="post">
+    <button type="submit" class="btn btn-default">Remove Band</button>
+  </form>
 #end
 </dl>
 #end
