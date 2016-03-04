@@ -74,5 +74,29 @@ public class App {
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
 
+    post("/bands/:id/updateName", (request, response) -> {
+      Band band = Band.find(Integer.parseInt(request.params(":id")));
+      String newName = request.queryParams("newName");
+      if(newName.trim().length() > 0) {
+        band.updateName(newName);
+        response.redirect("/bands/" + band.getId());
+        return null;
+      }
+      response.redirect("/bands/" + band.getId());
+      return null;
+    });
+
+    post("/bands/:id/updateMusic", (request, response) -> {
+      Band band = Band.find(Integer.parseInt(request.params(":id")));
+      String newMusic = request.queryParams("newMusic");
+      if(newMusic.trim().length() > 0) {
+        band.updateMusic(newMusic);
+        response.redirect("/bands/" + band.getId());
+        return null;
+      }
+      response.redirect("/bands/" + band.getId());
+      return null;
+    });
+
   }
 }

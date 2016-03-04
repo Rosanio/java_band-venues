@@ -2,6 +2,30 @@
 
 <h3>A(n) $band.getMusic() band</h3>
 
+<div class="row">
+  <div class="col-md-6">
+    <h3>Change Band Name:</h3>
+    <form action="/bands/$band.getId()/updateName" method="post">
+      <div class="form-group">
+        <label for="newName">New Name</label>
+        <input type="text" name="newName" id="newName" class="form-control" required>
+      </div>
+      <button type="submit" class="btn btn-primary" id="updateName">Submit</button>
+    </form>
+  </div>
+  <div class="col-md-6">
+    <h3>Change Music Type:</h3>
+    <form action="/bands/$band.getId()/updateMusic" method="post">
+      <div class="form-group">
+        <label for="newMusic">New Music Type</label>
+        <input type="text" name="newMusic" id="newMusic" class="form-control" required>
+      </div>
+      <button type="submit" class="btn btn-primary" id="updateMusic">Submit</button>
+    </form>
+  </div>
+</div>
+
+
 <h3>Venues played at:</h3>
 <dl>
 #foreach($venue in $venues)
