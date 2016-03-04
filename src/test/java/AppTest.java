@@ -71,4 +71,12 @@ public class AppTest extends FluentTest {
     goTo("http://localhost:4567/bands/" + newBand.getId());
     assertThat(pageSource()).contains("Matt and the Matties");
   }
+
+  @Test
+  public void viewVenue() {
+    Venue newVenue = new Venue("Epicodus", "Portland");
+    newVenue.save();
+    goTo("http://localhost:4567/venues/" + newVenue.getId());
+    assertThat(pageSource()).contains("Epicodus");
+  }
 }

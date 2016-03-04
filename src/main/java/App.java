@@ -65,5 +65,14 @@ public class App {
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
 
+    get("/venues/:id", (request, response) -> {
+      HashMap<String, Object> model = new HashMap<String, Object>();
+      Venue venue = Venue.find(Integer.parseInt(request.params(":id")));
+      model.put("venue", venue);
+      model.put("venues", venue.getBands());
+      model.put("template", "templates/venue.vtl");
+      return new ModelAndView(model, layout);
+    }, new VelocityTemplateEngine());
+
   }
 }
