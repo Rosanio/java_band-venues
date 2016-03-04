@@ -1,0 +1,11 @@
+<h1>$band.getName()</h1>
+
+<h3>A(n) $band.getMusic() band</h3>
+
+<h3>Venues played at:</h3>
+<dl>
+#foreach($venue in $venues)
+  <dt>$venue.getName()</dt>
+  <dd>Location: $venue.getLocation()</dd>
+#end
+</dl>

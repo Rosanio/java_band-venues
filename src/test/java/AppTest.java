@@ -63,4 +63,12 @@ public class AppTest extends FluentTest {
       submit("#addVenue");
       assertThat(pageSource()).contains("Epicodus");
   }
+
+  @Test
+  public void viewBand() {
+    Band newBand = new Band("Matt and the Matties", "Electro Fusion Funk Powersoul");
+    newBand.save();
+    goTo("http://localhost:4567/bands/" + newBand.getId());
+    assertThat(pageSource()).contains("Matt and the Matties");
+  }
 }
