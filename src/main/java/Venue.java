@@ -39,4 +39,11 @@ public class Venue {
       return newVenue.getName().equals(name) && newVenue.getLocation().equals(location);
     }
   }
+
+  public void save() {
+    try(Connection con = DB.sql2o.open()) {
+      String sql = "INSERT INTO venues (name, location) VALUES (:name, :location)";
+      con.createQuery(sql).addParameter("name", name).addParameter("location", location).executeUpdate();
+    }
+  }
 }
