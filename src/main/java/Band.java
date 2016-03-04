@@ -60,4 +60,12 @@ public class Band {
       con.createQuery(sql).addParameter("name", newName).addParameter("id", id).executeUpdate();
     }
   }
+
+  public void updateMusic(String newMusic) {
+    this.music = newMusic;
+    try(Connection con = DB.sql2o.open()) {
+      String sql = "UPDATE bands SET music = :music WHERE id = :id";
+      con.createQuery(sql).addParameter("music", newMusic).addParameter("id", id).executeUpdate();
+    }
+  }
 }

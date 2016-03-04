@@ -51,4 +51,12 @@ public class BandTest {
     newBand.updateName("Something Even Stupider");
     assertTrue(Band.find(newBand.getId()).equals(newBand));
   }
+
+  @Test
+  public void updateMusic_updatesBandMusicType() {
+    Band newBand = new Band("Matt and the Matties", "Electro Fusion Funk Powersoul");
+    newBand.save();
+    newBand.updateMusic("Something Even Stupider");
+    assertTrue(Band.find(newBand.getId()).equals(newBand));
+  }
 }
