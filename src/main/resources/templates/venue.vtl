@@ -2,10 +2,25 @@
 
 <h3>Located: $venue.getLocation()</h3>
 
+<br></br>
+<form action="/venues/$venue.getId()/addBand" method="post">
+  <div class="form-group">
+    <label for="bandSelect">Pick a band you've seen play at this venue:</label>
+    <select class="form-control" name="bandSelect" id="bandSelect">
+      #foreach($band in $allBands)
+        #if(!$venue.getBands().contains($band))
+          <option value="$band.getId()">$band.getName()</option>
+        #end
+      #end
+    </select>
+  </div>
+  <button type="submit" class="btn btn-primary" id="addBand">Add Band</button>
+</form>
+
 #if($venue.getBands().size() > 0)
 <h3>Bands who have played here:</h3>
 <dl>
-#foreach($band in $bands)
+#foreach($band in $venue.getBands())
   <dt>$band.getName()</dt>
   <dd>Plays $band.getMusic()</dd>
 #end

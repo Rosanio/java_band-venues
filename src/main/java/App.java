@@ -69,8 +69,10 @@ public class App {
     get("/venues/:id", (request, response) -> {
       HashMap<String, Object> model = new HashMap<String, Object>();
       Venue venue = Venue.find(Integer.parseInt(request.params(":id")));
+      System.out.println(venue.getBands());
       model.put("venue", venue);
       model.put("venues", venue.getBands());
+      model.put("allBands", Band.all());
       model.put("template", "templates/venue.vtl");
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
@@ -114,6 +116,14 @@ public class App {
       Venue venue = Venue.find(Integer.parseInt(request.queryParams("venueSelect")));
       band.addVenue(venue);
       response.redirect("/bands/" + band.getId());
+      return null;
+    });
+
+    post("/venues/:id/addBand", (request, response) -> {
+      Band band = Band.find(Integer.parseInt(request.queryParams("bandSelect")));
+      Venue venue = Venue.find(Integer.parseInt(request.params(":id")));
+      venue.addBand(band);
+      response.redirect("/venues/" + venue.getId());
       return null;
     });
 
