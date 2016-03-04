@@ -68,4 +68,11 @@ public class Band {
       con.createQuery(sql).addParameter("music", newMusic).addParameter("id", id).executeUpdate();
     }
   }
+
+  public void delete() {
+    try(Connection con = DB.sql2o.open()) {
+      String sql = "DELETE FROM bands WHERE id = :id";
+      con.createQuery(sql).addParameter("id", id).executeUpdate();
+    }
+  }
 }
