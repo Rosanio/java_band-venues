@@ -43,7 +43,7 @@ public class Venue {
   public void save() {
     try(Connection con = DB.sql2o.open()) {
       String sql = "INSERT INTO venues (name, location) VALUES (:name, :location)";
-      con.createQuery(sql).addParameter("name", name).addParameter("location", location).executeUpdate();
+      this.id = (int) con.createQuery(sql, true).addParameter("name", name).addParameter("location", location).executeUpdate().getKey();
     }
   }
 }

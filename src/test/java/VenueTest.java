@@ -27,13 +27,13 @@ public class VenueTest {
     assertTrue(Venue.all().get(0).equals(newVenue));
   }
 
-  // @Test
-  // public void save_savesVenueIdToDatabase() {
-  //   Venue newVenue = new Venue("Epicodus", "Downtown Portland");
-  //   newVenue.save();
-  //   assertEquals(Venue.all().get(0).getId(),newVenue.getId());
-  // }
-  //
+  @Test
+  public void save_savesVenueIdToDatabase() {
+    Venue newVenue = new Venue("Epicodus", "Downtown Portland");
+    newVenue.save();
+    assertEquals(Venue.all().get(0).getId(),newVenue.getId());
+  }
+
   // @Test
   // public void find_returnsVenueBasedOnId() {
   //   Venue newVenue = new Venue("Epicodus", "Downtown Portland");
