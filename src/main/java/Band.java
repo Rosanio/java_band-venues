@@ -52,4 +52,12 @@ public class Band {
       String sql = "SELECT * FROM bands WHERE id = :id";
       return con.createQuery(sql).addParameter("id", id).executeAndFetchFirst(Band.class);    }
   }
+
+  public void updateName(String newName) {
+    this.name = newName;
+    try(Connection con = DB.sql2o.open()) {
+      String sql = "UPDATE bands SET name = :name WHERE id = :id";
+      con.createQuery(sql).addParameter("name", newName).addParameter("id", id).executeUpdate();
+    }
+  }
 }
