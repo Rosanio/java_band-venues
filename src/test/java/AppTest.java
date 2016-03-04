@@ -36,6 +36,14 @@ public class AppTest extends FluentTest {
     newBand.save();
     goTo("http://localhost:4567/bands");
     assertThat(pageSource()).contains("Matt and the Matties");
+  }
 
+  @Test
+  public void addBand() {
+      goTo("http://localhost:4567/");
+      fill("#bandName").with("Radiohead");
+      fill("#bandMusic").with("Awesome Music");
+      submit(".btn");
+      assertThat(pageSource()).contains("Radiohead");
   }
 }

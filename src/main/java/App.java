@@ -23,5 +23,18 @@ public class App {
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
 
+    post("/addBand", (request, response) -> {
+      String bandName = request.queryParams("bandName");
+      String bandMusic = request.queryParams("bandMusic");
+      if(bandName.trim().length() > 0 && bandMusic.trim().length() > 0) {
+        Band newBand = new Band(bandName, bandMusic);
+        newBand.save();
+        response.redirect("/bands");
+        return null;
+      }
+      response.redirect("/");
+      return null;
+    });
+
   }
 }

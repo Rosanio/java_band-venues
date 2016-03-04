@@ -1,1 +1,15 @@
 <h1>Favorite Bands</h1>
+
+<h3>Add a new band</h3>
+<form action="/addBand" method="post">
+  <div class="form-group">
+    <label for="bandName">Name:</label>
+    <input type="text" name="bandName" id="bandName" class="form-control" required>
+  </div>
+
+  <div class="form-group">
+    <label for="bandMusic">Type of Music:</label>
+    <input type="text" name="bandMusic" id="bandMusic" class="form-control" required>
+  </div>
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
