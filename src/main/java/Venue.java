@@ -11,10 +11,32 @@ public class Venue {
     this.location = location;
   }
 
+  public int getId() {
+    return id;
+  }
+
+  public String getName() {
+    return name;
+  }
+
+  public String getLocation() {
+    return location;
+  }
+
   public static List<Venue> all() {
     try(Connection con = DB.sql2o.open()) {
       String sql = "SELECT * FROM venues";
       return con.createQuery(sql).executeAndFetch(Venue.class);
+    }
+  }
+
+  @Override
+  public boolean equals(Object otherVenue) {
+    if(!(otherVenue instanceof Venue)) {
+      return false;
+    } else {
+      Venue newVenue = (Venue) otherVenue;
+      return newVenue.getName().equals(name) && newVenue.getLocation().equals(location);
     }
   }
 }

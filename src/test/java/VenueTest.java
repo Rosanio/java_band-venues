@@ -13,30 +13,30 @@ public class VenueTest {
     assertEquals(Venue.all().size(), 0);
   }
 
-  // @Test
-  // public void equals_returnsTrueIfVenuesHaveSameNameAndMusic() {
-  //   Venue newVenue = new Venue("Epicodus");
-  //   Venue newVenue2 = new Venue("Epicodus");
-  //   assertTrue(newVenue.equals(newVenue2));
-  // }
-  //
+  @Test
+  public void equals_returnsTrueIfVenuesHaveSameNameAndMusic() {
+    Venue newVenue = new Venue("Epicodus", "Downtown Portland");
+    Venue newVenue2 = new Venue("Epicodus", "Downtown Portland");
+    assertTrue(newVenue.equals(newVenue2));
+  }
+
   // @Test
   // public void save_savesVenueToDatabase() {
-  //   Venue newVenue = new Venue("Epicodus");
+  //   Venue newVenue = new Venue("Epicodus", "Downtown Portland");
   //   newVenue.save();
   //   assertTrue(Venue.all().get(0).equals(newVenue));
   // }
   //
   // @Test
   // public void save_savesVenueIdToDatabase() {
-  //   Venue newVenue = new Venue("Epicodus");
+  //   Venue newVenue = new Venue("Epicodus", "Downtown Portland");
   //   newVenue.save();
   //   assertEquals(Venue.all().get(0).getId(),newVenue.getId());
   // }
   //
   // @Test
   // public void find_returnsVenueBasedOnId() {
-  //   Venue newVenue = new Venue("Epicodus");
+  //   Venue newVenue = new Venue("Epicodus", "Downtown Portland");
   //   newVenue.save();
   //   Venue newVenue2 = new Venue("Madison Square Garden");
   //   newVenue2.save();
@@ -46,7 +46,7 @@ public class VenueTest {
   //
   // @Test
   // public void updateName_updatesVenueName() {
-  //   Venue newVenue = new Venue("Epicodus");
+  //   Venue newVenue = new Venue("Epicodus", "Downtown Portland");
   //   newVenue.save();
   //   newVenue.updateName("Something Even Stupider");
   //   assertTrue(Venue.find(newVenue.getId()).equals(newVenue));
@@ -54,7 +54,7 @@ public class VenueTest {
   //
   // @Test
   // public void delete_removesVenueFromDatabase() {
-  //   Venue newVenue = new Venue("Epicodus");
+  //   Venue newVenue = new Venue("Epicodus", "Downtown Portland");
   //   newVenue.save();
   //   newVenue.delete();
   //   assertEquals(Venue.all().size(), 0);

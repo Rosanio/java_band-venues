@@ -36,7 +36,7 @@ public class Band {
       return false;
     } else {
       Band newBand = (Band) otherBand;
-      return newBand.getName().equals(name) && newBand.getMusic().equals(music);
+      return newBand.getName().equals(name) && newBand.getMusic().equals(music) && newBand.getId() == id;
     }
   }
 
