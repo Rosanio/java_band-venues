@@ -102,6 +102,18 @@ public class AppTest extends FluentTest {
     assertThat(pageSource()).contains("Matt and the Matties has been deleted");
   }
 
+  @Test
+  public void addVenueToBand() {
+    Band newBand = new Band("Matt and the Matties", "Electro Fusion Funk Powersoul");
+    newBand.save();
+    Venue newVenue = new Venue("Epicodus", "Portland");
+    newVenue.save();
+    goTo("http://localhost:4567/bands/" + newBand.getId());
+    click("option", withText("Epicodus"));
+    submit("#addVenue");
+    assertThat(pageSource()).contains("Portland");
+  }
+
   // @Test
   // public void updateVenue() {
   //   Venue newVenue = new Venue("Epicodus", "Portland");

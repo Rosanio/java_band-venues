@@ -61,6 +61,7 @@ public class App {
       Band band = Band.find(Integer.parseInt(request.params(":id")));
       model.put("band", band);
       model.put("venues", band.getVenues());
+      model.put("allVenues", Venue.all());
       model.put("template", "templates/band.vtl");
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
@@ -107,6 +108,14 @@ public class App {
       model.put("template", "templates/bands.vtl");
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
+
+    post("/bands/:id/addVenue", (request, response) -> {
+      Band band = Band.find(Integer.parseInt(request.params(":id")));
+      Venue venue = Venue.find(Integer.parseInt(request.queryParams("venueSelect")));
+      band.addVenue(venue);
+      response.redirect("/bands/" + band.getId());
+      return null;
+    });
 
   }
 }
