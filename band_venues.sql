@@ -168,7 +168,7 @@ COPY bands (id, name, music) FROM stdin;
 -- Name: bands_id_seq; Type: SEQUENCE SET; Schema: public; Owner: Matt
 --
 
-SELECT pg_catalog.setval('bands_id_seq', 1, true);
+SELECT pg_catalog.setval('bands_id_seq', 6, true);
 
 
 --
@@ -183,7 +183,7 @@ COPY bands_venues (id, band_id, venue_id) FROM stdin;
 -- Name: bands_venues_id_seq; Type: SEQUENCE SET; Schema: public; Owner: Matt
 --
 
-SELECT pg_catalog.setval('bands_venues_id_seq', 1, false);
+SELECT pg_catalog.setval('bands_venues_id_seq', 17, true);
 
 
 --
@@ -198,7 +198,7 @@ COPY venues (id, name, location) FROM stdin;
 -- Name: venues_id_seq; Type: SEQUENCE SET; Schema: public; Owner: Matt
 --
 
-SELECT pg_catalog.setval('venues_id_seq', 1, false);
+SELECT pg_catalog.setval('venues_id_seq', 5, true);
 
 
 --

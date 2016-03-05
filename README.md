@@ -1,0 +1,59 @@
+# Bands and Venues
+
+##### Epicodus code review 3/4/16
+
+##### Author Name
+Matt Rosanio
+
+## Description
+This website will allow users to make a list of their favorite bands and venues. Users can tell the website which bands have played at which venues, and vice versa. Users can update and delete bands, as well as request suggestions for bands with similar musical tastes or bands who have played the same venues.
+
+## Setup
+
+Clone this repository:
+```
+$ cd ~/Desktop
+$ git clone https://github.com/Rosanio/java_band-venues
+$ cd java_band-venues
+```
+
+Open terminal and run Postgres:
+```
+$ postgres
+```
+
+Open a new tab in terminal and create the `band_venues` database:
+```
+$ psql
+$ CREATE DATABASE band_venues;
+$ psql hair_salon < band_venues.sql
+```
+
+Navigate back to the directory where this repository has been cloned and run gradle:
+```
+$ gradle run
+```
+
+## Legal
+
+Copyright (c) 2016 Matt Rosanio
+
+This software is licensed under the MIT license.
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.
