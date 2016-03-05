@@ -21,6 +21,13 @@
       #foreach($similarBand in $band.sameVenues())
         <dt><a href="/bands/$similarBand.getId()">$similarBand.getName()</a></dt>
         <dd>Plays $similarBand.getMusic()</dd>
+        #foreach($venue in $band.getVenues())
+          #foreach($similarVenue in $similarBand.getVenues())
+            #if($venue.equals($similarVenue))
+              <dd>Both bands have played at <a href="/venues/$venue.getId()">$venue.getName()</a></dd>
+            #end
+          #end
+        #end
       #end
     </dl>
     #else
