@@ -69,7 +69,6 @@ public class App {
     get("/venues/:id", (request, response) -> {
       HashMap<String, Object> model = new HashMap<String, Object>();
       Venue venue = Venue.find(Integer.parseInt(request.params(":id")));
-      System.out.println(venue.getBands());
       model.put("venue", venue);
       model.put("venues", venue.getBands());
       model.put("allBands", Band.all());
@@ -145,6 +144,14 @@ public class App {
       response.redirect("/venues/" + venue.getId());
       return null;
     });
+
+    get("/bands/:id/suggest", (request, response) -> {
+      HashMap<String, Object> model = new HashMap<String, Object>();
+      Band band = Band.find(Integer.parseInt(request.params(":id")));
+      model.put("band", band);
+      model.put("template", "templates/suggest.vtl");
+      return new ModelAndView(model, layout);
+    }, new VelocityTemplateEngine());
 
   }
 }

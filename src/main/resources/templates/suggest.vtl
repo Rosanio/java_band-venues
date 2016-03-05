@@ -1,0 +1,33 @@
+<h1>Bands Like $band.getName()</h1>
+
+<div class="row">
+  <div class="col-md-6">
+    #if($band.similarMusic().size() > 0)
+    <h3>These bands have similar musical tastes</h3>
+    <dl>
+      #foreach($similarBand in $band.similarMusic())
+        <dt><a href="/bands/$similarBand.getId()">$similarBand.getName()</a></dt>
+        <dd>Plays $similarBand.getMusic()</dd>
+      #end
+    </dl>
+    #else
+    <h3>$band.getName() is one of a kind!</h3>
+    #end
+  </div>
+  <div class="col-md-6">
+    #if($band.sameVenues().size() > 0)
+    <h3>These bands have played at the same venues as $band.getName()</h3>
+    <dl>
+      #foreach($similarBand in $band.sameVenues())
+        <dt><a href="/bands/$similarBand.getId()">$similarBand.getName()</a></dt>
+        <dd>Plays $similarBand.getMusic()</dd>
+      #end
+    </dl>
+    #else
+    <h3>Clearly $band.getName() is too cool to play in any well known venues</h3>
+    #end
+  </div>
+</div>
+<br>
+
+<a href="/bands/$band.getId()">Go Back</a>

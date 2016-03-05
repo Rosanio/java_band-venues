@@ -96,4 +96,41 @@ public class Band {
       con.createQuery(sql).addParameter("band_id", id).addParameter("venue_id", venue.getId()).executeUpdate();
     }
   }
+
+  public ArrayList<Band> similarMusic() {
+    String[] splitMusic = this.getMusic().split("\\s+");
+    try(Connection con = DB.sql2o.open()) {
+      ArrayList<Band> bands = new ArrayList<Band>();
+      for(String musicWord : splitMusic) {
+        musicWord = "%" + musicWord + "%";
+        String sql = "SELECT * FROM bands WHERE LOWER(music) LIKE LOWER(:music)";
+        List<Band> similarBands = con.createQuery(sql).addParameter("music", musicWord).executeAndFetch(Band.class);
+        for(Band band : similarBands) {
+          if(!band.equals(this)) {
+            bands.add(band);
+          }
+        }
+      }
+      return bands;
+    }
+  }
+
+  public ArrayList<Band> sameVenues() {
+    List<Venue> venues = this.getVenues();
+    try(Connection con = DB.sql2o.open()) {
+      ArrayList<Band> bands = new ArrayList<Band>();
+      for(Venue venue : venues) {
+        String sql = "SELECT bands.* FROM bands_venues JOIN bands ON (bands.id = bands_venues.band_id) WHERE bands_venues.venue_id = :id";
+        List<Band> similarBands = con.createQuery(sql).addParameter("id", venue.getId()).executeAndFetch(Band.class);
+        for(Band band : similarBands) {
+          if(!band.equals(this)) {
+            if(!bands.contains(band)) {
+              bands.add(band);
+            }
+          }
+        }
+      }
+      return bands;
+    }
+  }
 }
